@@ -230,7 +230,7 @@ input:focus {
 
 .infolist {
     display: block;
-    width: 80%;
+    width: 100%;
     margin: 40px auto;
     background-color: rgb(40, 40, 40);
     color: rgb(240, 240, 240);

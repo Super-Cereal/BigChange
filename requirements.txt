@@ -9,3 +9,4 @@ Werkzeug==1.0.0
 WTForms==2.2.1
 transliterate==1.10.2
 bcrypt==3.1.7
+2

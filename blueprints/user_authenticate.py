@@ -3,10 +3,9 @@ from flask_login import login_required, logout_user, login_user, LoginManager
 
 from data import db_session
 from data.model_users import User
-from forms.form_add_user import FormAddUser
-from forms.form_login import FormLogin
 
-from .macros.delete_file_if_exists import delete_file_if_exists
+from forms.forms_users import FormAddUser, FormLogin
+
 from .macros.save_file import save_file
 
 

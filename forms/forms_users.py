@@ -28,3 +28,22 @@ class FormAddUser(FlaskForm):
             filename = secure_filename(field.data.filename)
             if filename.rsplit('.', 1)[1] not in ('png', 'jpeg', 'jpg'):
                 raise ValidationError("Invalid extension for photos, use .png or. jpeg(.jpg)")
+
+
+class FormEditUser(FlaskForm):
+    name = StringField('Your name or nickname', validators=[DataRequired(message='This field is required')])
+    photo = FileField('Upload an image to your profile')
+    submit = SubmitField('Send')
+
+    def validate_photo(self, field):
+        if field.data:
+            filename = secure_filename(field.data.filename)
+            if filename.rsplit('.', 1)[1] not in ('png', 'jpeg', 'jpg'):
+                raise ValidationError("Invalid extension for photos, use .png or. jpeg(.jpg)")
+
+
+class FormLogin(FlaskForm):
+    email = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
+    password = PasswordField('Set password', validators=[DataRequired(message='This field is required')])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Send')

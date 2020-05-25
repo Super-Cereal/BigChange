@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, abort, render_template
+from flask import Blueprint, redirect, render_template
 from flask_login import login_required, current_user
 
 from data import db_session
@@ -9,8 +9,7 @@ from .macros.delete_file_if_exists import delete_file_if_exists
 from .macros.save_file import save_file
 from .macros.yandex_static_map import get_map
 
-from forms.form_add_event import FormAddEvent
-from forms.form_edit_event import FormEditEvent
+from forms.forms_events import FormAddEvent, FormEditEvent
 
 
 blueprint = Blueprint('events', __name__,

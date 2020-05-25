@@ -9,7 +9,7 @@ from .macros.delete_file_if_exists import delete_file_if_exists
 from .macros.save_file import save_file
 from .macros.yandex_static_map import get_map
 
-from forms.forms_events import FormAddEvent, FormEditEvent
+from .forms.forms_events import FormAddEvent, FormEditEvent
 
 
 blueprint = Blueprint('events', __name__,

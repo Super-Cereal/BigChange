@@ -8,7 +8,7 @@ from .macros.delete_downloads_structure import delete_downloads_structure
 from .macros.delete_file_if_exists import delete_file_if_exists
 from .macros.save_file import save_file
 
-from forms.forms_users import FormEditUser
+from .forms.forms_users import FormEditUser
 
 
 blueprint = Blueprint('users', __name__,

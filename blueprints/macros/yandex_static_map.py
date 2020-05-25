@@ -1,4 +1,3 @@
-from flask import jsonify
 import base64
 from requests import get
 
@@ -22,7 +21,7 @@ def get_map(town):
     map_params = {
         'll': ','.join(ll.split()),
         'l': 'sat',
-        'z': 17,
+        'z': 16,
         'size': '450,450'
     }
     map_response = get(static_map_api_server, params=map_params)

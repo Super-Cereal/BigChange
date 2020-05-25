@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template
+from flask import Blueprint, redirect, render_template, session as flask_session
 from flask_login import login_required, current_user
 
 from data import db_session
@@ -33,6 +33,8 @@ def event(event_id):
 @blueprint.route('/add_event', methods=['GET', 'POST'])
 def add_event():
     form = FormAddEvent()
+    if not ((current_user.is_authenticated and flask_session.get('events_count', 0) < 10) or flask_session.get('events_count', 0) < 2):
+        return redirect('/events')
     if form.validate_on_submit():
         session = db_session.create_session()
         event = Event(
@@ -44,6 +46,7 @@ def add_event():
         if form.photo.data:
             event.photo = save_file(event, form.photo)
         session.commit()
+        flask_session['events_count'] = flask_session.get('events_count', 0) + 1
         return redirect(f'/event/{ event.id }')
     else:
         return render_template('form_add_event.html', form=form)
@@ -59,6 +62,7 @@ def edit_event(event_id):
         event.map_photo = get_map(event.address)
         event.content = form.content.data
         if form.photo.data:
+            delete_file_if_exists(event.photo)
             event.photo = save_file(event, form.photo)
         session.commit()
         return redirect(f'/event/{ event.id }')

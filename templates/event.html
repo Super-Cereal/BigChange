@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="infolist">
+        <div class='flexbox flex_c_nowr'>
+            <div>
+                <img src="data:image/png;base64,{{ event.map_photo }}" height="200px" alt="">
+                <img src="/{{ event.photo.path if event.photo else 'static/images/none_image.png' }}" height="200px">
+                <div class="flexbox flex_jcspacebetween_aicenter">
+                    <h2>Событие - {{ event.content[:15] + "..." }}</h2>
+                </div>
+                <h4>#id <span style='color: red'>{{ event.id }}</span></h4>
+                <p>{{ event.content }}</p>
+            </div>
+            {{ event.address }}
+            {% if event.photo %}
+                <div>
+                    <a href="/del_event_photo/{{ event.id }}" class='link'><i>Удалить фотографию</i></a>
+                </div>
+            {% endif %}
+            <br>
+            <br>
+            <br>
+            <a href="/del_event/{{ event.id }}" class='link'>Удалить событие</a>
+            <a href="/edit_event/{{ event.id }}" class='link'>Редактировать</a>
+        </div>
+    </div>
+{% endblock %}

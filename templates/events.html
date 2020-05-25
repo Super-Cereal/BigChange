@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="/add_event" class='link' style="margin-left: 150px">Добавить событие</a>
+    <table class="average-table">
+        <caption>События проекта</caption>
+        <thead>
+            <th>Контент</th>
+            <th>Адрес</th>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td><a href="/event/{{ event.id }}">{{ event.content[:15] + "..." }} (#{{ event.id }})</a></td>
+                    <td>{{ event.address }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

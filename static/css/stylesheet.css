@@ -1,0 +1,243 @@
+body {
+    background-color: #f6f6f6;
+    font-family: "Calibri", sans-serif;
+    font-size: 15px;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAMAAAApB0NrAAAABlBMVEX///+pqalTpKl9AAAAAnRSTlMAGovxNEIAAAAdSURBVDjLY2AAAUaG4UYxDDsfjfp91O+jfqfE7wCzpQCw/dq+qQAAAABJRU5ErkJggg==");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    color: #222222;
+    min-height: 553px;
+}
+
+.main-content-userbox {
+    width: 86%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.userbox {
+    background-color: rgb(230, 230, 230);
+    border-left: 1px solid lightslategrey;
+    padding: 0.5%;
+    width: 14%;
+}
+
+.userbox a img {
+    height: 12px;
+    margin-right: 3px;
+}
+
+.userbox h2 {
+    margin-bottom: 8px;
+}
+
+.userbox .btn {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.userbox input {
+    text-decoration: none;
+    border: none;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+}
+
+.page-header {
+    background-color: #232323;
+}
+
+.page-header a {
+    color: #f2f4f6;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.page-header a:hover {
+    background-color: #555;
+}
+
+.page-header h1 {
+    padding: 5px 0;
+    border-bottom: 2px solid #555;
+    color: #f2f4f6;
+    font-size: 28px;
+    text-align: center;
+}
+
+.page-header-icon {
+    height: 36px;
+    margin-right: 5px;
+}
+
+.page-footer{
+    background-color: #232323;
+    color: #f2f4f6;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+}
+
+.alert-danger { color: rgba(122, 0, 0, 1); }
+
+.btn {
+    display: block;
+    background: #ccc;
+    padding: 10px;
+    color: #333;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.red-btn {
+    background-color: rgba(135, 0, 0, 1);
+    color: white;
+}
+
+.blue-btn {
+    background-color: rgba(51, 109, 114, 1);
+    color: white;
+}
+
+.btn:hover {
+    background-color: #bbb;
+}
+
+.red-btn:hover {
+    background-color: rgba(100, 0, 0, 1);
+}
+
+.blue-btn:hover {
+    background-color: rgba(41, 87, 91, 1);
+}
+
+.link {
+    color: #44f;
+}
+
+.link:hover {
+    text-decoration: underline solid #44f;;
+}
+
+.flexbox { display: flex; }
+
+.flex_r_nowr { flex-flow: row nowrap; }
+
+.flex_c_nowr { flex-flow: column nowrap; }
+
+.flex_jcspacebetween_aicenter { justify-content: space-between; align-items: flex-end; }
+
+.form { 
+    background-color: rgba(235, 235, 235);
+    border: 2px solid rgba(63, 136, 143);
+    border-radius: 7px;
+    margin: 20px auto; 
+    table-layout: fixed; 
+    width: 500px;
+}
+
+.form section { margin: 20px; }
+
+.form-field {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(63, 136, 143, 0.7);
+    box-sizing: border-box;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.submit {
+    background-color: rgba(51, 109, 114, 0.9);
+    border-color: rgba(41, 87, 91, 0.9);
+    border-radius: 10px;
+    color: rgb(250, 250, 250);
+    cursor: pointer;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.mini-form {
+    background-color: rgba(215, 215, 215);
+    border: 1px dashed rgba(63, 136, 143);
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.mini-form .form-field {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.mini-form .submit {
+    padding: 5px;
+}
+
+.average-table {
+    border-spacing: 0;
+    margin: auto;
+    table-layout: fixed;
+    width: 90%;
+}
+
+.average-table a {
+    color: #44f;
+}
+
+.average-table a:hover {
+    text-decoration: underline solid #44f;
+}
+
+.average-table caption {
+    font-size: 25px;
+    padding: 15px 0px;
+}
+
+.average-table th {
+    color:rgba(235, 235, 235);
+    background-color: rgba(40, 40, 40, 1);
+    border-right: 2px solid rgba(100, 100, 100, 0.9);
+    padding: 5px 0px;
+    margin-bottom: 5px;
+}
+
+.average-table th:last-child {
+    border-right: none;
+}
+
+.average-table td {
+    background-color: rgba(235, 235, 235);
+    border-bottom: 2px solid rgba(40, 40, 40, 0.8);
+    border-right: 2px solid rgba(40, 40, 40, 0.8);
+    padding: 5px 5px;
+}
+
+.average-table td:last-child {
+    border-right: none;
+}
+
+.infolist {
+    display: block;
+    width: 80%;
+    margin: 40px auto;
+    background-color: rgb(40, 40, 40);
+    color: rgb(240, 240, 240);
+    padding: 30px;
+}
+
+.infolist img {
+    float: left;
+    margin: 0px 10px 7px 0px
+}

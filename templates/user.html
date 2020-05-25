@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="infolist">
+        <div class='flexbox flex_c_nowr'>
+            <div>
+                <img src="/{{ user.photo.path if user.photo else 'static/images/none_image.png' }}" height="200px">
+                <div class="flexbox flex_jcspacebetween_aicenter">
+                    <h2>{{ user.name }}</h2>
+                    {% if current_user.is_authenticated and current_user.id == user.id %}
+                        <a href="/edit_user/{{ user.id }}" class='link'>
+                            <img src="/static/images/edit_icon1.png" height="18px">Редактировать</a>
+                    {% endif %}
+                </div>
+                <h4>#id <span style='color: red'>{{ user.id }}</span></h4>
+                <h5>Последний раз заходил на сайт: <span style='color: red'>{{ user.last_time_in }}</span></h5>
+                <p>Почта - {{ user.email }}</p>
+            </div>
+            {% if current_user.is_authenticated and current_user.id == user.id and user.photo %}
+                <div>
+                    <a href="/del_user_photo/{{ user.id }}" class='link'><i>Удалить фотографию</i></a>
+                </div>
+            {% endif %}
+            <br>
+            <br>
+            <br>
+            {% if current_user.is_authenticated and current_user.id == user.id %}
+                <div>
+                    <a href="/logout" class='link'><i>Выйти из аккаунта</i></a>
+                    <br>
+                    <a href="/del_user/{{ user.id }}" class='link'><i>Удалить аккаунт</i></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

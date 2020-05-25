@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table class="average-table">
+        <caption>Пользователи проекта</caption>
+        <thead>
+            <th>Имя</th>
+            <th>Почта</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="/user/{{ user.id }}">{{ user.name }} (#{{ user.id }})</a></td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

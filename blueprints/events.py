@@ -16,6 +16,14 @@ blueprint = Blueprint('events', __name__,
                       template_folder='templates')
 
 
+@blueprint.route('/events_sorry')
+def events_sorry():
+    if current_user.is_authenticated:
+        return render_template('events_reg_sorry.html')
+    else:
+        return render_template('events_unreg_sorry.html')
+
+
 @blueprint.route('/events/', methods=['GET', 'POST'])
 def events():
     session = db_session.create_session()
@@ -33,8 +41,8 @@ def event(event_id):
 @blueprint.route('/add_event', methods=['GET', 'POST'])
 def add_event():
     form = FormAddEvent()
-    if not ((current_user.is_authenticated and flask_session.get('events_count', 0) < 10) or flask_session.get('events_count', 0) < 2):
-        return redirect('/events')
+    if not ((current_user.is_authenticated and flask_session.get('events_count', 0) < 10) or flask_session.get('events_count', 0) == 0):
+        return redirect('/events_sorry')
     if form.validate_on_submit():
         session = db_session.create_session()
         event = Event(

@@ -7,11 +7,16 @@
         {{ form.hidden_tag() }}
         {{ form.csrf_token() }}
         {{ render_field(form.email, class="form-field")}}
-        {{ render_field(form.password, class="form-field")}}
+        {{ render_field(form.password, class="form-field password")}}
+        {{ render_field(form.show_password, class="show-password") }}
         {{ render_field(form.remember) }}
         <section>
             <div class="alert-danger">{{ message }}</div>
             {{ form.submit(class='blue-btn btn submit') }}
         </section>
     </form>
+{% endblock %}
+
+{% block endDocument %}
+    <script src="static/js/showPassword.js"></script>
 {% endblock %}

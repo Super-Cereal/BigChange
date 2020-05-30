@@ -8,7 +8,8 @@
         {{ form.csrf_token() }}
         {{ render_field(form.name, class="form-field") }}
         {{ render_field(form.email, class="form-field") }}
-        {{ render_field(form.password, class="form-field") }}
+        {{ render_field(form.password, class="form-field password") }}
+        {{ render_field(form.show_password, class="show-password") }}
         {{ render_field(form.password_again, class="form-field") }}
         {{ render_field(form.photo, class="form-field") }}
         {{ render_field(form.remember) }}
@@ -17,4 +18,8 @@
             {{ form.submit(class='blue-btn btn submit') }}
         </section>
     </form>
+{% endblock %}
+
+{% block endDocument %}
+    <script src="static/js/showPassword.js"></script>
 {% endblock %}

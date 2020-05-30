@@ -13,6 +13,7 @@ class FormAddUser(FlaskForm):
     email = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
     password = PasswordField('Set password', validators=[DataRequired(message='This field is required'),
                                                          Length(min=5, message='The password must contain at least 5 characters')])
+    show_password = BooleanField('Show password')
     password_again = PasswordField('Repeat password', [DataRequired(message='This field is required'), EqualTo('password', message='Passwords must match')])
     photo = FileField('Upload an image to your profile')
     remember = BooleanField('Remember me')
@@ -45,5 +46,6 @@ class FormEditUser(FlaskForm):
 class FormLogin(FlaskForm):
     email = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
     password = PasswordField('Your password', validators=[DataRequired(message='This field is required')])
+    show_password = BooleanField('Show password')
     remember = BooleanField('Remember me')
     submit = SubmitField('Send')

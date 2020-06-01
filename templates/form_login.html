@@ -2,7 +2,7 @@
 
 {% block content %}
     {% from "macros/render_field.html" import render_field %}
-    <form method="post" class="form" novalidate>
+    <form method="post" class="form">
         <h1 style="text-align: center;">Login Form</h1>
         {{ form.hidden_tag() }}
         {{ form.csrf_token() }}

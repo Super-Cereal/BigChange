@@ -1,0 +1,151 @@
+*
+  box-sizing: border-box
+  font-family: 'Museo Sans Cyrl', sans-serif
+ul[class],
+ol[class] 
+  padding: 0
+  margin: 0
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd 
+  margin: 0
+  padding: 0
+body 
+  min-height: 100vh
+  scroll-behavior: smooth
+  text-rendering: optimizeSpeed
+  line-height: 1.5
+ul[class],
+ol[class] 
+  list-style: none
+a:not([class]) 
+  text-decoration-skip-ink: auto
+img 
+  max-width: 100%
+  display: block
+article > * + * 
+  margin-top: 1em
+input,
+button,
+textarea,
+select 
+  font: inherit
+@media (prefers-reduced-motion: reduce)
+    *
+        animation-duration: 0.01ms !important
+        animation-iteration-count: 1 !important
+        transition-duration: 0.01ms !important
+        scroll-behavior: auto !important
+
+.form
+    width: 320px
+    margin: 0 auto
+    &-control
+        width: 320px
+        font-family: Verdana, sans-serif
+        position: relative
+        input, textarea
+            display: block
+            outline: none
+            width: 100%
+            background: #fff
+            border: 2px solid #fcc
+            padding: 15px
+            font-size: 24px
+            color: #500
+            font-family: inherit
+            cursor: pointer
+            &:valid + label, &:focus + label
+                top: 0
+                font-size: 14px
+        textarea:valid + label, textarea:focus + label 
+            display: none
+            pacity: 0      
+        label
+            cursor: pointer
+            display: block
+            position: absolute
+            left: 15px
+            top: 18px
+            color: #aaa
+            font-size: 20px
+            transition: 0.2s all
+        [name="email"]
+            margin-top: 50px
+        [name="password"], [name="password_again"],  [name="name"],  [name="content"],[for="show_password"],  [name="photo"]
+            margin-top: 20px
+            resize: none
+        [name="photo"]
+            font-size: 100%
+        [for="remember"]
+            margin-top: 25px
+                
+
+
+input[type="checkbox"]:checked, 
+input[type="checkbox"]:not(:checked)
+    position: absolute
+    left: -9999px
+    &+label
+        display: inline-block
+        position: relative
+        padding-left: 28px
+        line-height: 20px
+        cursor: pointer
+        &::before
+            content: ""
+            position: absolute
+            left: 0px
+            top: 0px
+            width: 18px
+            height: 18px
+            border: 1px solid #dddddd
+            background-color: #ffffff
+            border-radius: 2px
+        &::after
+            content: ""
+            position: absolute
+            left: 3px
+            top: 4px
+            width: 10px
+            height: 5px
+            border-radius: 1px
+            transition: all 0.2s ease
+            border-left: 4px solid #ff2400
+            border-bottom: 4px solid #ff2400
+            transform: rotate(-45deg)
+input[type="checkbox"]:not(:checked) + label:after
+    opacity: 0
+input[type="checkbox"]:checked + label:after
+    opacity: 1
+
+
+.submit-button
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 320px
+    height: 50px
+    color: #6b6b6b
+    background: #fff
+    border: 2px solid #fcc
+    text-transform: uppercase
+    font-size: 20px
+    margin-top: 25px
+    margin-bottom: 75px
+    cursor: pointer
+    transition: 0.5s all
+    &:hover
+        box-shadow: 3px 3px 20px #ff2400
+        border: none

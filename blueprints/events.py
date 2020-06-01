@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, session as flask_session
+from flask import Blueprint, redirect, render_template, abort, session as flask_session
 from flask_login import login_required, current_user
 
 from data import db_session
@@ -51,9 +51,10 @@ def add_event():
             content=form.content.data
         )
         session.add(event)
+        session.commit()
         if form.photo.data:
             event.photo = save_file(event, form.photo)
-        session.commit()
+            session.commit()
         flask_session['events_count'] = flask_session.get('events_count', 0) + 1
         return redirect(f'/event/{ event.id }')
     else:
@@ -61,6 +62,7 @@ def add_event():
 
 
 @blueprint.route('/edit_event/<event_id>', methods=['GET', 'POST'])
+@login_required
 def edit_event(event_id):
     form = FormEditEvent()
     if form.validate_on_submit():
@@ -83,10 +85,28 @@ def edit_event(event_id):
 
 
 @blueprint.route('/del_event/<event_id>', methods=['GET', 'POST'])
+@login_required
 def del_event(event_id):
     session = db_session.create_session()
     event = session.query(Event).get(event_id)
+    if not event:
+        abort(404)
+    elif current_user.id != event.user_id:
+        abort(403)
     delete_downloads_structure(event)
     session.delete(event)
     session.commit()
     return redirect('/events')
+
+
+@blueprint.route('/del_event_photo/<int:event_id>', methods=['GET', 'POST'])
+@login_required
+def del_event_photo(event_id):
+    session = db_session.create_session()
+    event = session.query(Event).get(event_id)
+    if not event:
+        abort(404)
+    elif current_user.id != event.id:
+        abort(403)
+    delete_file_if_exists(file=event.photo, session=session)
+    return redirect(f'/event/{event_id}')

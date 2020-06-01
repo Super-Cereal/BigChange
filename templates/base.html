@@ -2,38 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="static/css/style.min.css">
-
-    <link rel="stylesheet" href="static/css/font.css">
     <title>Доброе дело</title>
 </head>
 <body>
     <header class="page-header">
-        <h1>Доброе дело</h1>
-        <div class="flexbox flex_r_nowr flex_jcspacebetween_aicenter">
-            <div class="flexbox">
-                <a href="/">На главную</a>
-                <a href="">Фонды помощи</a>
-                <a href="/events">Карта событий</a>
-                <a href="/add_event">Добавить событие</a>
+            <div class="dws-menu">
+                <ul class="dws-ul">
+                    <li class="dws-li"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Главная</a></li>
+                    <li class="dws-li"><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Фонды</a></li>
+                    <li class="dws-li"><a href="/events"><i class="fa fa-server" aria-hidden="true"></i>Карта</a></li>
+                    <li class="dws-li"><a href="/add_event"><i class="fa fa-folder-open" aria-hidden="true"></i>Добавить</a></li>
+                    <li class="dws-li"><a href="/"><i class="fa fa-folder-open" aria-hidden="true"></i>Новости</a></li>
+                    {% if current_user.is_authenticated %}          
+                        <li class="dws-li"><a href="/user/{{ current_user.id }}"><i class="fa fa-folder-open" aria-hidden="true"></i>Личный кабинет</a></li>
+                    {% else %}
+                        <li class="dws-li"><a href="/login"><i class="fa fa-server" aria-hidden="true"></i>Войти</a></li>
+                        <li class="dws-li"><a href="/registration"><i class="fa fa-folder-open" aria-hidden="true"></i>Зарегистрироваться</a></li>
+                    {% endif %}
+                </ul>
             </div>
-            <div class="flexbox">
-
-                {% if current_user.is_authenticated %}          
-                    <a href="/user/{{ current_user.id }}">Личный кабинет</a>
-                {% else %}
-                    <a href="/login">Войти</a>
-                    <a href="/registration">Зарегистрироваться</a>
-                {% endif %}
-            </div>
-        </div>
     </header>
     <main>
         <div>
             {% block content %}{% endblock %}
         </div>
     </main>
-    <footer class="page-footer"></footer>
     {% block endDocument %}{% endblock %}
 </body>
 </html>

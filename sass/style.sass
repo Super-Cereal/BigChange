@@ -5,20 +5,7 @@ ul[class],
 ol[class] 
   padding: 0
   margin: 0
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd 
+body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquote, dl, dd 
   margin: 0
   padding: 0
 body 
@@ -26,8 +13,8 @@ body
   scroll-behavior: smooth
   text-rendering: optimizeSpeed
   line-height: 1.5
-ul[class],
-ol[class] 
+  background:  url("../images/white-flecks.png")
+ul[class],ol[class] 
   list-style: none
 a:not([class]) 
   text-decoration-skip-ink: auto
@@ -36,24 +23,15 @@ img
   display: block
 article > * + * 
   margin-top: 1em
-input,
-button,
-textarea,
-select 
+input, button, textarea, select 
   font: inherit
-@media (prefers-reduced-motion: reduce)
-    *
-        animation-duration: 0.01ms !important
-        animation-iteration-count: 1 !important
-        transition-duration: 0.01ms !important
-        scroll-behavior: auto !important
+
 
 .form
     width: 320px
     margin: 0 auto
     &-control
-        width: 320px
-        font-family: Verdana, sans-serif
+        width: 320px  
         position: relative
         input, textarea
             display: block
@@ -71,7 +49,8 @@ select
                 font-size: 14px
         textarea:valid + label, textarea:focus + label 
             display: none
-            pacity: 0      
+            opacity: 0      
+
         label
             cursor: pointer
             display: block
@@ -116,10 +95,10 @@ input[type="checkbox"]:not(:checked)
         &::after
             content: ""
             position: absolute
-            left: 3px
-            top: 4px
-            width: 10px
-            height: 5px
+            left: 1px
+            top: 3px
+            width: 15px
+            height: 8px
             border-radius: 1px
             transition: all 0.2s ease
             border-left: 4px solid #ff2400
@@ -149,3 +128,71 @@ input[type="checkbox"]:checked + label:after
     &:hover
         box-shadow: 3px 3px 20px #ff2400
         border: none
+
+
+.dws-menu
+  width: 100%
+  .dws-ul
+    display: flex
+    padding: 0
+    justify-content: space-around
+    align-items: center
+    li
+      list-style: none
+      a
+        text-decoration: none
+        font-size: 18px
+        color: #000
+        position: relative
+        padding: 5px
+        i
+          margin-right: 10px
+        &::before
+          content: ''
+          width: 0
+          height: 3px
+          background-color: #33bdf1
+          position: absolute
+          top: 90%
+          left: 0
+          transition: .5s
+          mix-blend-mode: multiply
+        &::after
+          content: ''
+          width: 0
+          height: 3px
+          background-color: #ff2117
+          position: absolute
+          top: 90%
+          right: 0
+          transition: .5s
+          mix-blend-mode: multiply
+      &:hover
+        background-color: #e5eae8
+        a
+          &::before
+            width: 50%
+            transform: translateX(100%)
+          &::after
+            width: 50%
+            transform: translateX(-100%)
+          &:hover
+            color: #e62117
+        
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

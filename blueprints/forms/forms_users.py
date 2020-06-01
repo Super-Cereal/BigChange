@@ -15,7 +15,7 @@ class FormAddUser(FlaskForm):
                                                          Length(min=5, message='The password must contain at least 5 characters')])
     show_password = BooleanField('Show password')
     password_again = PasswordField('Repeat password', [DataRequired(message='This field is required'), EqualTo('password', message='Passwords must match')])
-    photo = FileField('Upload an image to your profile')
+    photo = FileField('Image')
     remember = BooleanField('Remember me')
     submit = SubmitField('Send')
 
@@ -33,7 +33,7 @@ class FormAddUser(FlaskForm):
 
 class FormEditUser(FlaskForm):
     name = StringField('Your name or nickname', validators=[DataRequired(message='This field is required')])
-    photo = FileField('Upload an image to your profile')
+    photo = FileField('Image')
     submit = SubmitField('Send')
 
     def validate_photo(self, field):

@@ -1,7 +1,7 @@
 {% macro render_field(field) %}
-    <section>
-        {{ field.label() }} {% if field.flags.required %}<span style="color: brown;">*</span>{% endif %}
+    <section class="form-control">
         {{ field(**kwargs) }}
+        {{ field.label(class='lbl') }}
         {% for error in field.errors %}
             <div class="alert-danger" role="alert">{{ error }}</div>
         {% endfor %}

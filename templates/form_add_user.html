@@ -6,17 +6,14 @@
         <h1 style="text-align: center;">Registration</h1>
         {{ form.hidden_tag() }}
         {{ form.csrf_token() }}
-        {{ render_field(form.name, class="form-field") }}
         {{ render_field(form.email, class="form-field") }}
+        {{ render_field(form.name, class="form-field") }}
         {{ render_field(form.password, class="form-field password") }}
-        {{ render_field(form.show_password, class="show-password") }}
         {{ render_field(form.password_again, class="form-field") }}
-        {{ render_field(form.photo, class="form-field") }}
         {{ render_field(form.remember) }}
-        <section>
-            <div class="alert-danger">{{ message }}</div>
-            {{ form.submit(class='blue-btn btn submit') }}
-        </section>
+        {{ render_field(form.show_password, class="show-password") }}
+        <div class="alert-danger">{{ message }}</div>
+        {{form.submit(class='submit-button') }}
     </form>
 {% endblock %}
 

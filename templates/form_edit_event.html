@@ -3,7 +3,7 @@
 {% block content %}
     {% from "macros/render_field.html" import render_field %}
     <form method="post" class="form" enctype="multipart/form-data" novalidate>
-        <h1 style="text-align: center;">Registration</h1>
+        <h1 style="text-align: center;">LOGIN UP</h1>
         {{ form.hidden_tag() }}
         {{ form.csrf_token() }}
         {{ render_field(form.address, class="form-field") }}
@@ -11,7 +11,7 @@
         {{ render_field(form.photo, class="form-field") }}
         <section>
             <div class="alert-danger">{{ message }}</div>
-            {{ form.submit(class='blue-btn btn submit') }}
+            {{ form.submit(class='submit-button') }}
         </section>
     </form>
 {% endblock %}

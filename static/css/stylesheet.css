@@ -1,3 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
 body {
     background-color: #f6f6f6;
     font-family: 'Museo Sans Cyrl', sans-serif;
@@ -284,10 +313,11 @@ input[type="checkbox"]:checked + label:after{
 .form-control [name="content"]{
     resize: none;
     position: relative;
-    width: 310px;
-    height: 60px;
+    width: 345px;
+    height: 80px;
     transform: translateX(-13px);
     background: #fff;
+    font-size: 24px;
     border: 2px solid #fcc;
     padding: 15px;
 }

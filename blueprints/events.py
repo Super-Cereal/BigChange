@@ -18,10 +18,7 @@ blueprint = Blueprint('events', __name__,
 
 @blueprint.route('/events_sorry')
 def events_sorry():
-    if current_user.is_authenticated:
-        return render_template('events_reg_sorry.html')
-    else:
-        return render_template('events_unreg_sorry.html')
+    return render_template('events_sorry.html')
 
 
 @blueprint.route('/events/', methods=['GET', 'POST'])

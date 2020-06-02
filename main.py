@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from flask_ngrok import run_with_ngrok
+
 from blueprints import user_authenticate, users, events
 
 from data import db_session
@@ -11,6 +13,7 @@ db_session.global_init('db/SQLiteBase.sqlite')
 app.register_blueprint(user_authenticate.blueprint)
 app.register_blueprint(users.blueprint)
 app.register_blueprint(events.blueprint)
+run_with_ngrok(app)
 
 
 @app.route('/', methods=['GET'])
@@ -19,5 +22,4 @@ def index():
 
 
 if __name__ == "__main__":
-    if True:
-        app.run()
+    app.run()

@@ -10,19 +10,27 @@
                     <h2>Событие - {{ event.content[:15] + "..." }}</h2>
                 </div>
                 <h4>#id <span style='color: red'>{{ event.id }}</span></h4>
-                <p>{{ event.content }}</p>
-                
+                <p>Описание - {{ event.content }}</p>
+                {% if current_user.is_authenticated and current_user.id == event.user_id %}
+                    <b><a href="/add_event_addition/{{ event.id }}" class='link'>Добавить пометку</a></b>
+                {% endif %}
+                {% if event.additions %}
+                    {% for addition in event.additions %}
+                        <hr>
+                        <div>{{ loop.index }}){{ addition }}</div>
+                    {% endfor %}
+                    <hr>
+                {% endif %}
             </div>
-            {{ event.address }}
+            Адрес - {{ event.address }}
             {% if event.photo %}
                 <div>
                     <a href="/del_event_photo/{{ event.id }}" class='link'><i>Удалить фотографию</i></a>
+                    <br>
                 </div>
             {% endif %}
-            <br>
-            <br>
-            <br>
             <a href="/del_event/{{ event.id }}" class='link'>Удалить событие</a>
+            <br>
             <a href="/edit_event/{{ event.id }}" class='link'>Редактировать</a>
         </div>
     </div>

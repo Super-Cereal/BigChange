@@ -5,11 +5,10 @@ from data import db_session
 from data.model_events import Event
 
 from .macros.delete_downloads_structure import delete_downloads_structure
-from .macros.delete_file_if_exists import delete_file_if_exists
 from .macros.save_file import save_file
 from .macros.yandex_static_map import get_map
 
-from .forms.forms_events import FormAddEvent, FormEditEvent
+from .forms.forms_events import FormAddEvent, FormAddEventAddition
 
 
 blueprint = Blueprint('events', __name__,
@@ -45,7 +44,8 @@ def add_event():
         event = Event(
             address=form.address.data,
             map_photo=get_map(form.address.data),
-            content=form.content.data
+            content=form.content.data,
+            user_id=current_user.id
         )
         session.add(event)
         session.commit()
@@ -58,30 +58,22 @@ def add_event():
         return render_template('form_add_event.html', form=form)
 
 
-@blueprint.route('/edit_event/<event_id>', methods=['GET', 'POST'])
+@blueprint.route('/add_event_addition/<int:event_id>', methods=['GET', 'POST'])
 @login_required
-def edit_event(event_id):
-    form = FormEditEvent()
+def add_event_addition(event_id):
+    session = db_session.create_session()
+    event = session.query(Event).get(event_id)
+    if current_user.id != event.user_id:
+        abort(403)
+    form = FormAddEventAddition()
     if form.validate_on_submit():
-        session = db_session.create_session()
-        event = session.query(Event).get(event_id)
-        event.address = form.address.data
-        event.map_photo = get_map(event.address)
-        event.content = form.content.data
-        if form.photo.data:
-            delete_file_if_exists(event.photo)
-            event.photo = save_file(event, form.photo)
-        session.commit()
-        return redirect(f'/event/{ event.id }')
+        event.additions.append(form.content.data)
+        return redirect(f'/event/{event_id}')
     else:
-        session = db_session.create_session()
-        event = session.query(Event).get(event_id)
-        form.address.data = event.address
-        form.content.data = event.content
-        return render_template('form_edit_event.html', form=form)
+        return render_template('form_add_event_addition.html', form=form, event=event)
 
 
-@blueprint.route('/del_event/<event_id>', methods=['GET', 'POST'])
+@blueprint.route('/del_event/<int:event_id>', methods=['GET', 'POST'])
 @login_required
 def del_event(event_id):
     session = db_session.create_session()
@@ -94,16 +86,3 @@ def del_event(event_id):
     session.delete(event)
     session.commit()
     return redirect('/events')
-
-
-@blueprint.route('/del_event_photo/<int:event_id>', methods=['GET', 'POST'])
-@login_required
-def del_event_photo(event_id):
-    session = db_session.create_session()
-    event = session.query(Event).get(event_id)
-    if not event:
-        abort(404)
-    elif current_user.id != event.id:
-        abort(403)
-    delete_file_if_exists(file=event.photo, session=session)
-    return redirect(f'/event/{event_id}')

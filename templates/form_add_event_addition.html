@@ -4,12 +4,10 @@
     {% from "macros/render_field.html" import render_field %}
     <div class="container">
     <form method="post" class="form" enctype="multipart/form-data">
-        <h1 style="text-align: center;">LOGIN UP</h1>
+        <h1 style="text-align: center;">Добавить пометку к событию</h1>
         {{ form.hidden_tag() }}
         {{ form.csrf_token() }}
-        {{ render_field(form.address, class="form-field") }}
         {{ render_field(form.content, class="form-field") }}
-        {{ render_field(form.photo, class="form-field") }}
         <section>
             <div class="alert-danger">{{ message }}</div>
             {{ form.submit(class='submit-button') }}

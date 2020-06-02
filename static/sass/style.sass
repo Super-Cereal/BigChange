@@ -1,6 +1,7 @@
 *, not(.menu)
   box-sizing: border-box
   font-family: "Times New Roman", Times, serif
+  z-index: 1
 ul[class],
 ol[class] 
   padding: 0
@@ -9,7 +10,7 @@ body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquot
   margin: 0
   padding: 0
 body 
-  min-height: 100vh
+  min-height: 200vh
   scroll-behavior: smooth
   text-rendering: optimizeSpeed
   line-height: 1.5
@@ -133,6 +134,7 @@ input[type="checkbox"]:checked + label:after
 
 
 .menu
+  z-index: 9999
   font-family: 'Roboto', sans-serif
   display: block
   width: 100%
@@ -174,7 +176,6 @@ input[type="checkbox"]:checked + label:after
     span
       color: #2F2E2E
       text-decoration: none
-
 
 
 

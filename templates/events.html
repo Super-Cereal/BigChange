@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
     <a href="/add_event" >Добавить событие</a>
     <table class="average-table">
         <caption>События проекта</caption>
@@ -17,4 +18,5 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock %}

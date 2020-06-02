@@ -2,17 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/css/fonts.css" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/bootstrap-grid.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.min.css">
     <title>Доброе дело</title>
 </head>
 <body>
-    <header class="page-header">
+    <!-- <header class="page-header">
             <div class="dws-menu">
                 <ul class="dws-ul">
-                    <li class="dws-li"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Главная</a></li>
+                    <li class="dws-li"><a href="/">Главная</a></li>
                     <li class="dws-li"><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Фонды</a></li>
                     <li class="dws-li"><a href="/events"><i class="fa fa-server" aria-hidden="true"></i>Карта</a></li>
                     <li class="dws-li"><a href="/add_event"><i class="fa fa-folder-open" aria-hidden="true"></i>Добавить</a></li>
@@ -25,6 +24,25 @@
                     {% endif %}
                 </ul>
             </div>
+    </header> -->
+    <header class="menu">
+        <div class="container">
+        <div class="menu__wrapper">
+            <a href=""><div class="menu_logo">ДЕЛАЙ <br> ДОБРО</div> </a>
+            <ul class="menu_ul">
+                <li class="menu_li"><a href="/">Главная</a></li>
+                <li class="menu_li"><a href="/add_event">Добавить</a></li>
+                <li class="menu_li"><a href="/events">Карта</a></li>
+                <li class="menu_li"><a href="/">Новости</a></li>
+                {% if current_user.is_authenticated %}          
+                        <li class="menu_li"><a href="/user/{{ current_user.id }}">Личный кабинет</a></li>
+                {% else %}
+                        <li class="menu_li"><a href="/login">Войти</a></li>
+                        <li class="menu_li"><a href="/registration">Зарегистрироваться</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
     </header>
     <main>
         <div>

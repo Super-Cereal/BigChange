@@ -1,6 +1,6 @@
-*
+*, not(.menu)
   box-sizing: border-box
-  font-family: 'Museo Sans Cyrl', sans-serif
+  font-family: "Times New Roman", Times, serif
 ul[class],
 ol[class] 
   padding: 0
@@ -16,8 +16,6 @@ body
   background:  url("../images/white-flecks.png")
 ul[class],ol[class] 
   list-style: none
-a:not([class]) 
-  text-decoration-skip-ink: auto
 img 
   max-width: 100%
   display: block
@@ -26,6 +24,8 @@ article > * + *
 input, button, textarea, select 
   font: inherit
 
+.average-table, .infolist, .form 
+  padding-top: 150px
 
 .form
     width: 320px
@@ -49,8 +49,7 @@ input, button, textarea, select
                 font-size: 14px
         textarea:valid + label, textarea:focus + label 
             display: none
-            opacity: 0      
-
+            opacity: 0
         label
             cursor: pointer
             display: block
@@ -130,61 +129,51 @@ input[type="checkbox"]:checked + label:after
         border: none
 
 
-.dws-menu
+
+
+
+.menu
+  font-family: 'Roboto', sans-serif
+  display: block
   width: 100%
-  .dws-ul
+  padding: 15px 0
+  height: 120px
+  font-size: 20px
+  font-weight: 300
+  position: fixed
+  background-color: #fff
+  color: #2F2E2E
+  &__wrapper
     display: flex
-    padding: 0
-    justify-content: space-around
+    justify-content: space-between
     align-items: center
-    li
-      list-style: none
-      a
-        text-decoration: none
-        font-size: 18px
-        color: #000
-        position: relative
-        padding: 5px
-        i
-          margin-right: 10px
-        &::before
-          content: ''
-          width: 0
-          height: 3px
-          background-color: #33bdf1
-          position: absolute
-          top: 90%
-          left: 0
-          transition: .5s
-          mix-blend-mode: multiply
-        &::after
-          content: ''
-          width: 0
-          height: 3px
-          background-color: #ff2117
-          position: absolute
-          top: 90%
-          right: 0
-          transition: .5s
-          mix-blend-mode: multiply
+    a
+      color: #2F2E2E
+      text-decoration: none
+  &_ul
+    width: 700px
+    display: flex
+    font-style: oblique
+    font-weight: 300
+    justify-content: space-between
+    a
+      color: #2F2E2E
+      text-decoration: none
       &:hover
-        background-color: #e5eae8
-        a
-          &::before
-            width: 50%
-            transform: translateX(100%)
-          &::after
-            width: 50%
-            transform: translateX(-100%)
-          &:hover
-            color: #e62117
-        
-                
+        color: #6d6d6d
 
-
-
-
-
+  &_logo
+    letter-spacing: 5px
+    display: flex
+    justify-content: center
+    align-items: center
+    height: auto
+    width: 144px
+    padding: 12px
+    border: 1px solid black
+    span
+      color: #2F2E2E
+      text-decoration: none
 
 
 

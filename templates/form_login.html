@@ -2,6 +2,7 @@
 
 {% block content %}
     {% from "macros/render_field.html" import render_field %}
+    <div class="container">
     <form method="post" class="form">
         <h1">Login Form</h1>
         {{ form.hidden_tag() }}
@@ -15,6 +16,7 @@
             {{ form.submit(class='submit-button') }}
         </section>
     </form>
+</div>
 {% endblock %}
 
 {% block scripts %}

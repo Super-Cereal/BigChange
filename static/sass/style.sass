@@ -1,6 +1,6 @@
 *
   box-sizing: border-box
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif
 ul[class],
 ol[class] 
   padding: 0
@@ -9,11 +9,10 @@ body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquot
   margin: 0
   padding: 0
 body 
-  min-height: 100vh
   scroll-behavior: smooth
   text-rendering: optimizeSpeed
   line-height: 1.5
-  background:  url("../images/white-flecks.png")
+  background:  #fff
 ul[class],ol[class] 
   list-style: none
 img 
@@ -23,12 +22,11 @@ article > * + *
   margin-top: 1em
 input, button, textarea, select 
   font: inherit
-
-.average-table, .infolist, .form 
+.average-table, .infolist, .form, .add_event
+  display: block
   padding-top: 150px
-
 .form
-    width: 400px
+    width: 380px
     margin: 0 auto
     &-control
         width: 100%   
@@ -80,10 +78,12 @@ input, button, textarea, select
         [for="remember"]
             margin-top: 25px
                 
-
+.modal_reg
+  display: none
 
 input[type="checkbox"]:checked, 
 input[type="checkbox"]:not(:checked)
+    font-weight: 300
     position: absolute
     left: -9999px
     &+label
@@ -122,27 +122,33 @@ input[type="checkbox"]:checked + label:after
 
 
 .submit-button
-    font-weight: 300
+    display: block
+    font-weight: 400
     display: flex
     justify-content: center
     align-items: center
-    width: 100%
-    background-color: #4eb7f5
+    width: 50%
+    height: 40px
+    background-color: #fff
     height: 50px
     color: black
-    border-radius: 10px
+    border-radius: 100px
+    color: #4eb7f5
     border: none
     text-transform: uppercase
-    font-size: 20px
+    font-size: 16px
     margin-top: 25px
     margin-bottom: 75px
     cursor: pointer
-    transition: 0.5s all
+    border: 1px solid #4eb7f5
+    transition: 1s all
     outline: none
     &:hover
-        box-shadow: 3px 3px 20px #4eb7f5
-        border: none
+        transition: 1s all
+        background-color: #4eb7f5
+        box-shadow: inset 0 0 0 1px #3899ec
         outline: none
+        color: #fff
 
 
 
@@ -167,7 +173,7 @@ input[type="checkbox"]:checked + label:after
       color: #2F2E2E
       text-decoration: none
   &_ul
-    width: 700px
+    width: 600px
     display: flex
     font-style: oblique
     font-weight: 300
@@ -199,30 +205,54 @@ input[type="checkbox"]:checked + label:after
 
 .overlay
   position: relative
+  .form
+    padding-top: 69px
   
 .hamburger
+  display: none
   z-index: 10
   cursor: pointer
   position: absolute
-  right: 32px
+  right: 0
   top: 32px
   width: 32px
   height: 32px
-  opacity: 0.3
-  transition: 0.5s all
   &:hover 
-    opacity: 1
+    &:before, &:after 
+      background-color: #4eb7f5
   &:before, &:after 
     position: absolute
     left: 15px
     content: ' '
     height: 33px
-    width: 2px
-    background-color: #333
+    width: 1px
+    background-color: black
+
   &:before 
     transform: rotate(45deg)
   &:after 
     transform: rotate(-45deg)
 .alert-danger
   font-weight: 300
-    
+
+.modal
+  height: 840px
+  overflow: hidden
+  &__descr
+    padding-top: 140px
+    text-align: center
+    color: #20303c
+    font-size: 53px
+    font-weight: 300
+  &__hr
+    margin-top: 17px
+    text-align: center
+    color: #20303c
+    font-weight: 300
+    font-size: 20px
+    span
+      color: #459fed
+      cursor: pointer
+  &_reg
+    .modal__descr
+    padding-top: 0

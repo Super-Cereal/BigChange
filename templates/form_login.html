@@ -2,34 +2,38 @@
 
 {% block content %}
     {% from "macros/render_field.html" import render_field %}
-    <div class="container">
-        <form method="post" class="form" enctype="multipart/form-data">
-            <h1 style="text-align: center;">Registration</h1>
-            {{ form_reg.hidden_tag() }}
-            {{ form_reg.csrf_token() }}
-            {{ render_field(form_reg.email_reg, class="form-field") }}
-            {{ render_field(form_reg.name_reg, class="form-field") }}
-            {{ render_field(form_reg.password_reg, class="form-field password") }}
-            {{ render_field(form_reg.password_again_reg, class="form-field") }}
-            {{ render_field(form_reg.remember_reg) }}
-            {{ render_field(form_reg.show_password_reg, class="show-password") }}
-            <div class="alert-danger">{{ message_reg }}</div>
-            {{form_reg.submit_reg(class='submit-button') }}
-        </form>
-    </div>
-    <div class="container">
-        <form method="post" class="form">
-            <h1 style="text-align: center;">Login Form</h1>
-            {{ form_log.hidden_tag() }}
-            {{ form_log.csrf_token() }}
-            {{ render_field(form_log.email_log, class="form-field")}}
-            {{ render_field(form_log.password_log, class="form-field password") }}
-            {{ render_field(form_log.show_password_log, class="show-password") }}
-            {{ render_field(form_log.remember_log) }}
-            <div class="alert-danger">{{ message_log }}</div>
-            {{ form_log.submit_log(class='submit-button') }}
-        </form>
+    <div class="overlay">
+        <div class="moodal" id='login'>
+            <form method="post" class="form" enctype="multipart/form-data">
+                <h1 style="text-align: center;">Registration</h1>
+                {{ form_reg.hidden_tag() }}
+                {{ form_reg.csrf_token() }}
+                {{ render_field(form_reg.email_reg, class="form-field") }}
+                {{ render_field(form_reg.name_reg, class="form-field") }}
+                {{ render_field(form_reg.password_reg, class="form-field password") }}
+                {{ render_field(form_reg.password_again_reg, class="form-field") }}
+                {{ render_field(form_reg.remember_reg) }}
+                {{ render_field(form_reg.show_password_reg, class="show-password") }}
+                <section>
+                    <div class="alert-danger" id="lol_reg">{{ message_reg }}</div>
+                    {{form_reg.submit_reg(class='submit-button') }}
+                </section>>
+            </form>
+            <form method="post" class="form">
+                <h1 style="text-align: center;">Login Form</h1>
+                {{ form_log.hidden_tag() }}
+                {{ form_log.csrf_token() }}
+                {{ render_field(form_log.email_log, class="form-field email")}}
+                {{ render_field(form_log.password_log, class="form-field password") }}
+                {{ render_field(form_log.show_password_log, class="show-password") }}
+                {{ render_field(form_log.remember_log) }}
+                <section>
+                    <div class="alert-danger" id='lol_log'>{{ message_log }}</div>
+                    {{ form_log.submit_log(class='submit-button') }}
+                </section>
+            </form>
         </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}

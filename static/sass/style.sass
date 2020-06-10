@@ -28,36 +28,46 @@ input, button, textarea, select
   padding-top: 150px
 
 .form
-    width: 320px
+    width: 400px
     margin: 0 auto
     &-control
-        width: 320px  
+        width: 100%   
         position: relative
         input, textarea
             display: block
             outline: none
             width: 100%
-            background: #fff
-            border: 2px solid #fcc
-          
-            padding: 20px 15px 10px 15px
-            font-size: 24px
-            color: #500
+            background: rgba(0, 0, 0, 0)
+            border: none
+            border-bottom: 1px solid #e1e1e1
+            margin-top: 10px
+            padding: 17px 15px 10px 10px
+            font-size: 20px
+            color: black
             font-family: inherit
             cursor: pointer
+            font-weight: 300
+            transition: 0.5s all
             &:valid + label, &:focus + label
                 top: 0
-                font-size: 14px
+                left: 10px
+                font-size: 13px 
+            &:hover
+              border-bottom: 1px solid  black
+            &:focus
+                border-bottom: 2px solid #4eb7f5
+
         textarea:valid + label, textarea:focus + label 
             display: none
             opacity: 0
         label
+            font-weight: 300
             cursor: pointer
             display: block
             position: absolute
             left: 15px
             top: 24px
-            color: #aaa
+            color: black
             font-size: 20px
             transition: 0.2s all
         [name="email"]
@@ -77,6 +87,7 @@ input[type="checkbox"]:not(:checked)
     position: absolute
     left: -9999px
     &+label
+        margin-top: 25px
         display: inline-block
         position: relative
         padding-left: 28px
@@ -101,8 +112,8 @@ input[type="checkbox"]:not(:checked)
             height: 8px
             border-radius: 1px
             transition: all 0.2s ease
-            border-left: 4px solid #ff2400
-            border-bottom: 4px solid #ff2400
+            border-left: 4px solid #4eb7f5
+            border-bottom: 4px solid #4eb7f5
             transform: rotate(-45deg)
 input[type="checkbox"]:not(:checked) + label:after
     opacity: 0
@@ -115,11 +126,12 @@ input[type="checkbox"]:checked + label:after
     display: flex
     justify-content: center
     align-items: center
-    width: 320px
+    width: 100%
+    background-color: #4eb7f5
     height: 50px
-    color: #6b6b6b
-    background: #fff
-    border: 2px solid #fcc
+    color: black
+    border-radius: 10px
+    border: none
     text-transform: uppercase
     font-size: 20px
     margin-top: 25px
@@ -128,7 +140,7 @@ input[type="checkbox"]:checked + label:after
     transition: 0.5s all
     outline: none
     &:hover
-        box-shadow: 3px 3px 20px #ff2400
+        box-shadow: 3px 3px 20px #4eb7f5
         border: none
         outline: none
 
@@ -197,6 +209,7 @@ input[type="checkbox"]:checked + label:after
   width: 32px
   height: 32px
   opacity: 0.3
+  transition: 0.5s all
   &:hover 
     opacity: 1
   &:before, &:after 
@@ -210,3 +223,6 @@ input[type="checkbox"]:checked + label:after
     transform: rotate(45deg)
   &:after 
     transform: rotate(-45deg)
+.alert-danger
+  font-weight: 300
+    

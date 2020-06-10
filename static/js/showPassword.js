@@ -8,3 +8,4 @@ showPassword.onchange = function () {
     password.type = 'password'
   }
 };
+

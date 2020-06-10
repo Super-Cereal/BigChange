@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/css/bootstrap-grid.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.min.css">
     <title>Доброе дело</title>
 </head>
@@ -11,8 +11,8 @@
     <header class="menu">
         <div class="container">
         <div class="menu__wrapper">
-            <a href=""><div class="menu_logo">ДЕЛАЙ <br> ДОБРО</div> </a>
-            <ul class="menu_ul">
+            <div class="menu_logo">ДЕЛАЙ <br> ДОБРО</div>
+            <ul class="menu_ul" id='menu'>
                 <li class="menu_li"><a href="/">Главная</a></li>
                 <li class="menu_li"><a href="/add_event">Добавить</a></li>
                 <li class="menu_li"><a href="/events">Карта</a></li>
@@ -20,7 +20,7 @@
                 {% if current_user.is_authenticated %}          
                         <li class="menu_li"><a href="/user/{{ current_user.id }}">Личный кабинет</a></li>
                 {% else %}
-                        <li class="menu_li"><a href="/login">Войти</a></li>
+                        <li class="menu_li go"><a href='/login' style="cursor:pointer;">Логин</a> </li>
                         <li class="menu_li"><a href="/registration">Зарегистрироваться</a></li>
                 {% endif %}
             </ul>
@@ -29,9 +29,15 @@
     </header>
     <main>
         <div>
-            {% block content %}{% endblock %}
+            {% block content %}
+            {% endblock %}
         </div>
     </main>
-    {% block scripts %}{% endblock %}
+    {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    {% endblock %}
 </body>
 </html>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<!-- <div class="hamburger" style="cursor: pointer;" onclick="history.back();return false;"></div> -->

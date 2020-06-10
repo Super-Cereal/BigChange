@@ -1,7 +1,6 @@
-*, not(.menu)
+*
   box-sizing: border-box
-  font-family: "Times New Roman", Times, serif
-  z-index: 1
+  font-family: 'Roboto', sans-serif;
 ul[class],
 ol[class] 
   padding: 0
@@ -10,7 +9,7 @@ body, h1, h2, h3, h4, p, ul[class], ol[class], li, figure, figcaption, blockquot
   margin: 0
   padding: 0
 body 
-  min-height: 200vh
+  min-height: 100vh
   scroll-behavior: smooth
   text-rendering: optimizeSpeed
   line-height: 1.5
@@ -40,7 +39,8 @@ input, button, textarea, select
             width: 100%
             background: #fff
             border: 2px solid #fcc
-            padding: 15px
+          
+            padding: 20px 15px 10px 15px
             font-size: 24px
             color: #500
             font-family: inherit
@@ -56,7 +56,7 @@ input, button, textarea, select
             display: block
             position: absolute
             left: 15px
-            top: 18px
+            top: 24px
             color: #aaa
             font-size: 20px
             transition: 0.2s all
@@ -111,6 +111,7 @@ input[type="checkbox"]:checked + label:after
 
 
 .submit-button
+    font-weight: 300
     display: flex
     justify-content: center
     align-items: center
@@ -125,25 +126,26 @@ input[type="checkbox"]:checked + label:after
     margin-bottom: 75px
     cursor: pointer
     transition: 0.5s all
+    outline: none
     &:hover
         box-shadow: 3px 3px 20px #ff2400
         border: none
+        outline: none
 
 
 
 
 
 .menu
-  z-index: 9999
-  font-family: 'Roboto', sans-serif
+  z-index: 9
   display: block
   width: 100%
   padding: 15px 0
   height: 120px
   font-size: 20px
   font-weight: 300
-  position: fixed
-  background-color: #fff
+  position: absolute
+  background-color: rgba(0, 0, 0, 0)
   color: #2F2E2E
   &__wrapper
     display: flex
@@ -183,6 +185,28 @@ input[type="checkbox"]:checked + label:after
 
 
 
-
-
-
+.overlay
+  position: relative
+  
+.hamburger
+  z-index: 10
+  cursor: pointer
+  position: absolute
+  right: 32px
+  top: 32px
+  width: 32px
+  height: 32px
+  opacity: 0.3
+  &:hover 
+    opacity: 1
+  &:before, &:after 
+    position: absolute
+    left: 15px
+    content: ' '
+    height: 33px
+    width: 2px
+    background-color: #333
+  &:before 
+    transform: rotate(45deg)
+  &:after 
+    transform: rotate(-45deg)

@@ -20,39 +20,30 @@ def user_load(user_id):
     return session.query(User).get(user_id)
 
 
-@blueprint.route('/registration', methods=['GET', 'POST'])
-def registration():
-    form = FormAddUser()
-    if form.validate_on_submit():
+@blueprint.route('/login', methods=['GET', 'POST'])
+def login():
+    form_registration = FormAddUser()
+    form_login = FormLogin()
+    if form_registration.validate_on_submit():
         user = User(
-            name=form.name.data,
-            email=form.email.data,
+            name=form_registration.name_reg.data,
+            email=form_registration.email_reg.data,
             type=1
         )
-        user.set_password(form.password.data)
+        user.set_password(form_registration.password_reg.data)
         session = db_session.create_session()
         session.add(user)
         session.commit()
-        if form.photo.data:
-            user.photo = save_file(user, file=form.photo)
-            session.commit()
-        login_user(user, remember=form.remember.data)
+        login_user(user, remember=form_registration.remember_reg.data)
         return redirect(f'/user/{user.id}')
-    else:
-        return render_template('form_add_user.html', form=form)
-
-
-@blueprint.route('/login', methods=['GET', 'POST'])
-def login():
-    form = FormLogin()
-    if form.validate_on_submit():
+    if form_login.validate_on_submit():
         session = db_session.create_session()
-        user = session.query(User).filter(User.email == form.email.data).first()
-        if not user or not user.check_password(form.password.data):
-            return render_template('form_login.html', form=form, message="Invalid username or password")
-        login_user(user, remember=form.remember.data)
+        user = session.query(User).filter(User.email == form_login.email_log.data).first()
+        if not user or not user.check_password(form_login.password_log.data):
+            return render_template('form_login.html', form_log=form_login, form_reg=form_registration, message_l="Invalid username or password")
+        login_user(user, remember=form_login.remember_log.data)
         return redirect(f'/user/{user.id}')
-    return render_template('form_login.html', form=form)
+    return render_template('form_login.html', form_log=form_login, form_reg=form_registration)
 
 
 @blueprint.route('/logout/', methods=['GET', 'POST'])

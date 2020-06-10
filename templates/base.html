@@ -18,10 +18,9 @@
                     <li class="menu_li"><a href="/events">Карта</a></li>
                     <li class="menu_li"><a href="/">Новости</a></li>
                     {% if current_user.is_authenticated %}          
-                            <li class="menu_li"><a href="/user/{{ current_user.id }}">Личный кабинет</a></li>
+                        <li class="menu_li"><a href="/user/{{ current_user.id }}">Личный кабинет</a></li>
                     {% else %}
-                            <li class="menu_li"><a href="/login">Войти</a></li>
-                            <li class="menu_li"><a href="/registration">Зарегистрироваться</a></li>
+                        <li class="menu_li"><a href="/login">Войти</a></li>
                     {% endif %}
                 </ul>
             </div>

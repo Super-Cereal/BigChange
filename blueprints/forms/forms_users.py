@@ -9,15 +9,14 @@ from data.model_users import User
 
 
 class FormAddUser(FlaskForm):
-    name = StringField('Your name or nickname', validators=[DataRequired(message='This field is required')])
-    email = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
-    password = PasswordField('Set password', validators=[DataRequired(message='This field is required'),
+    name_reg = StringField('Your name or nickname', validators=[DataRequired(message='This field is required')])
+    email_reg = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
+    password_reg = PasswordField('Set password', validators=[DataRequired(message='This field is required'),
                                                          Length(min=5, message='The password must contain at least 5 characters')])
-    show_password = BooleanField('Show password')
-    password_again = PasswordField('Repeat password', [DataRequired(message='This field is required'), EqualTo('password', message='Passwords must match')])
-    photo = FileField('Image')
-    remember = BooleanField('Remember me')
-    submit = SubmitField('Send')
+    show_password_reg = BooleanField('Show password')
+    password_again_reg = PasswordField('Repeat password', [DataRequired(message='This field is required'), EqualTo('password', message='Passwords must match')])
+    remember_reg = BooleanField('Remember me')
+    submit_reg = SubmitField('Send')
 
     def validate_email(self, field):
         session = db_session.create_session()
@@ -44,8 +43,8 @@ class FormEditUser(FlaskForm):
 
 
 class FormLogin(FlaskForm):
-    email = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
-    password = PasswordField('Your password', validators=[DataRequired(message='This field is required')])
-    show_password = BooleanField('Show password')
-    remember = BooleanField('Remember me')
-    submit = SubmitField('Send')
+    email_log = StringField('Your email address', validators=[DataRequired(message='This field is required'), Email(message='Invalid email address')])
+    password_log = PasswordField('Your password', validators=[DataRequired(message='This field is required')])
+    show_password_log = BooleanField('Show password')
+    remember_log = BooleanField('Remember me')
+    submit_log = SubmitField('Send')

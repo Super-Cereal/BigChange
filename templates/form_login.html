@@ -17,7 +17,7 @@
                 <section>
                     <div class="alert-danger" id="lol_reg">{{ message_reg }}</div>
                     {{form_reg.submit_reg(class='submit-button') }}
-                </section>>
+                </section>
             </form>
             <form method="post" class="form">
                 <h1 style="text-align: center;">Login Form</h1>
@@ -33,9 +33,12 @@
                 </section>
             </form>
         </div>
+        <div class="hamburger" style="cursor: pointer;" onclick="history.back();return false;"></div>
     </div>
 {% endblock %}
 
 {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="static/js/script.js"></script>
     <script src="static/js/showPassword.js"></script>
 {% endblock %}

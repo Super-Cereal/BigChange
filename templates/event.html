@@ -4,7 +4,8 @@
     <div class="container">
     <div class="infolist">
         <div class=''>
-            <div>
+            <div>]
+                
                 <img src="data:image/png;base64,{{ event.map_photo }}" height="300px" alt="">
                 <img src="/{{ event.photo.path if event.photo else 'static/images/none_image.png' }}" height="300px">
                 <h2>Событие - {{ event.content[:15] + "..." }}</h2>
@@ -23,7 +24,7 @@
             </div>
             Адрес - {{ event.address }}
             <br>
-            {% if current_user.is_authenticated and current_user.id == event.user_id %}
+            {% if cur rent_user.is_authenticated and current_user.id == event.user_id %}
                 <a href="/del_event/{{ event.id }}" class='link'>Удалить событие</a>
             {% endif %}
         </div>

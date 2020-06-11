@@ -1,22 +1,24 @@
 $(document).ready(function(){
-    $('.menu_ul').fadeOut(2000);
+    $('.menu_ul').hide();
+
     function explode(){
         $('#hamb').fadeIn(1000);
       }
-      setTimeout(explode, 2001);
-    let textUserQuestion = document.getElementById('email_log');
+      setTimeout(explode, 500);
+    const textUserQuestion = document.getElementById('email_log');
                 textUserQuestion.focus();
+    const textUserQuestion2 = document.getElementById('email_reg');
     $('.vt').on('click', function(){
-            $('.modal_reg').fadeOut('slow')
-            $('.modal_log').fadeIn(500)
+            $('.modal_reg').hide()
+            $('.modal_log').show() 
+            textUserQuestion.focus();
             
             
           });
     $('.sz').on('click', function(){
-            $('.modal_log').fadeOut('slow')
-            $('.modal_reg').fadeIn(500)
-            let textUserQuestion = document.getElementById('email_reg');
-                textUserQuestion.focus();
+            $('.modal_log').hide()
+            $('.modal_reg').show() 
+            textUserQuestion2.focus();
           });
 
 });

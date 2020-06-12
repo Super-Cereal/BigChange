@@ -1,6 +1,6 @@
 *
   box-sizing: border-box
-  font-family: 'Roboto', sans-serif
+  font-family: 'Montserrat', sans-serif;
 ul[class],
 ol[class] 
   padding: 0
@@ -27,7 +27,7 @@ input, button, textarea, select
   padding-top: 150px
 .request_error
   display: block
-  padding-top: 300px
+  padding-top: 285px
   a
     color: #459fed
     text-decoration: none
@@ -39,7 +39,10 @@ input, button, textarea, select
     font-size: 20px
     font-weight: 400
     text-align: center
-    margin-top: 15px
+    margin-top: 5px
+    &:nth-child(1)
+      margin-top: 20px
+      
 
 .form
     width: 380px
@@ -60,8 +63,8 @@ input, button, textarea, select
             color: black
             font-family: inherit
             cursor: pointer
-            font-weight: 300
-            transition: 0.5s all
+            font-weight: 300 
+            transition: 0.5s all linear
             &:valid + label, &:focus + label
                 top: 0
                 left: 10px
@@ -83,7 +86,7 @@ input, button, textarea, select
             top: 24px
             color: black
             font-size: 20px
-            transition: 0.2s all
+            transition: 0.2s all linear
         [name="email"]
             margin-top: 50px
         [name="password"], [name="password_again"],  [name="name"],  [name="content"],[for="show_password"],  [name="photo"]
@@ -127,7 +130,7 @@ input[type="checkbox"]:not(:checked)
             width: 15px
             height: 8px
             border-radius: 1px
-            transition: all 0.2s ease
+            transition: all 0.2s linear
             border-left: 4px solid #4eb7f5
             border-bottom: 4px solid #4eb7f5
             transform: rotate(-45deg)
@@ -157,10 +160,9 @@ input[type="checkbox"]:checked + label:after
     margin-bottom: 75px
     cursor: pointer
     border: 1px solid #4eb7f5
-    transition: 1s all
+    transition: .2s all linear
     outline: none
     &:hover
-        transition: 1s all
         background-color: #4eb7f5
         box-shadow: inset 0 0 0 1px #3899ec
         outline: none
@@ -180,30 +182,47 @@ input[type="checkbox"]:checked + label:after
   font-weight: 300
   position: absolute
   background-color: rgba(0, 0, 0, 0)
-  color: #2F2E2E
+  color: #20303c
   &__wrapper
     display: flex
     justify-content: space-between
-    align-items: center
+    align-items: center 
     a
-      color: #2F2E2E
+      color: color: #20303c
+      height: 100%
       text-decoration: none
+      position: relative
+      &::after
+        content: ''
+        display: block
+        width: 100%
+        height: 2px
+        background-color: #4eb7f5
+        position: absolute
+        top: 100%
+        opacity: 0
+        left: 0
+        transition: .2s all linear
+      &:hover::after
+        transition: .2s all linear
+        opacity: 1
   &_ul
     width: 600px
     display: flex
     font-style: oblique
     justify-content: space-between
-    a
-      color: #2F2E2E
-      text-decoration: none
-      &:hover
-        color: #6d6d6d
+    align-items: center
+  &_li
+    display: block
+    height: 100%
+    font-weight: 400
   &_logo
     letter-spacing: 5px
     display: flex
     justify-content: center
     align-items: center
     height: auto
+    font-weight: 400
     width: 144px
     padding: 12px
     border: 1px solid black
@@ -220,7 +239,8 @@ input[type="checkbox"]:checked + label:after
 .overlay
   position: relative
   .form
-    padding-top: 69px
+    padding-top: 40px
+      
   
 .hamburger
   display: none
@@ -251,13 +271,16 @@ input[type="checkbox"]:checked + label:after
 
 .modal
   height: 840px
-  overflow: hidden
   &__descr
-    padding-top: 140px
+    padding-top: 160px
     text-align: center
     color: #20303c
     font-size: 53px
     font-weight: 300
+    &_pt200px
+      padding-top: 200px
+      
+      
   &__hr
     margin-top: 17px
     text-align: center

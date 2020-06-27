@@ -5,9 +5,9 @@
     <div class="container">
     <div class="overlay">
         <div class="modal">
-            <div class="modal_reg" id="modal_reg">
+            <div class="modal_reg" id="modal_reg" style='display: none;'>
                 <h1 class="modal__descr">Новый аккаунт</h1>
-                <div class="modal__hr">У вас уже есть аккаунт?<span class="vt"> Войти</span></div>
+                <div class="modal__hr">У вас уже есть аккаунт?<span class="vt" id='vt'> Войти</span></div>
                 <form method="post" class="form" enctype="multipart/form-data" >
                     {{ form_reg.hidden_tag() }}
                     {{ form_reg.csrf_token() }}
@@ -25,7 +25,7 @@
             </div>
             <div class="modal_log" id="modal_log">
                 <h4 class="modal__descr modal__descr_pt200px">Вход</h4>
-                <div class="modal__hr">У вас еще нет аккаунта?<span class="sz"> Создать</span></div>
+                <div class="modal__hr">У вас еще нет аккаунта?<span class="sz" id="sz"> Создать</span></div>
                 <form method="post" class="form">
                     {{ form_log.hidden_tag() }}
                     {{ form_log.csrf_token() }}
@@ -46,7 +46,10 @@
 {% endblock %}
 
 {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="static/js/script.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="static/js/login.js"></script>
+    <script src="static/js/jquery.cookie.js"></script>
     <script src="static/js/showPassword.js"></script>
+    <script src="static/js/jquery.js"></script>
 {% endblock %}

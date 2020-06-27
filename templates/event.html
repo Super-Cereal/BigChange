@@ -5,8 +5,10 @@
     <div class="infolist">
         <div class=''>
             <div>
-                <img src="data:image/png;base64,{{ event.map_photo }}" height="300px" alt="">
-                <img src="/{{ event.photo.path if event.photo else 'static/images/none_image.png' }}" height="300px">
+                <img src="data:image/png;base64,{{ map_photo }}" height="300px" alt="">
+                {% if event.photo %}
+                <img src="/{{ event.photo.path }}" height="300px">
+                {% endif %}
                 <h2>Событие - {{ event.content[:15] + "..." }}</h2>
                 <h4>#id <span style='color: red'>{{ event.id }}</span></h4>
                 <p>Описание - {{ event.content }}</p>

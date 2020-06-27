@@ -15,5 +15,5 @@ class Event(SqlAlchemyBase, SerializerMixin):
                                 sqlalchemy.ForeignKey("users.id"))
     # user = sqlalchemy.orm.relation("User")
     photo = sqlalchemy.orm.relation("File", uselist=False)
-    map_photo = sqlalchemy.Column(sqlalchemy.String)
+    ll = sqlalchemy.Column(sqlalchemy.String)
     additions = list()

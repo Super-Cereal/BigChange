@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, abort, session as flask_session
+from flask import Blueprint, redirect, render_template, abort
 from flask_login import login_required, current_user
 
 from data import db_session
@@ -6,7 +6,7 @@ from data.model_events import Event
 
 from .macros.delete_downloads_structure import delete_downloads_structure
 from .macros.save_file import save_file
-from .macros.yandex_static_map import get_map
+from .macros.yandex_static_map import get_ll, get_map
 
 from .forms.forms_events import FormAddEvent, FormAddEventAddition
 
@@ -31,19 +31,23 @@ def events():
 def event(event_id):
     session = db_session.create_session()
     event = session.query(Event).get(event_id)
-    return render_template('event.html', event=event)
+    map_photo = get_map(event.ll)
+    return render_template('event.html', event=event, map_photo=map_photo)
 
 
 @blueprint.route('/add_event', methods=['GET', 'POST'])
 def add_event():
     form = FormAddEvent()
-    if not ((current_user.is_authenticated and flask_session.get('events_count', 0) < 10) or flask_session.get('events_count', 0) == 0):
+    if not current_user.is_authenticated:
         return redirect('/events_sorry')
     if form.validate_on_submit():
+        ll = get_ll(form.address.data)
+        if not ll:
+            return render_template('form_add_event.html', form=form, message="Addres not found")
         session = db_session.create_session()
         event = Event(
             address=form.address.data,
-            map_photo=get_map(form.address.data),
+            ll=ll,
             content=form.content.data,
             user_id=current_user.id
         )
@@ -52,7 +56,6 @@ def add_event():
         if form.photo.data:
             event.photo = save_file(event, form.photo)
             session.commit()
-        flask_session['events_count'] = flask_session.get('events_count', 0) + 1
         return redirect(f'/event/{ event.id }')
     else:
         return render_template('form_add_event.html', form=form)

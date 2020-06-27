@@ -18,6 +18,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     last_time_in = sqlalchemy.Column(sqlalchemy.String,
                                      default=time.ctime)
     hashed_password = sqlalchemy.Column(sqlalchemy.String)
+    help_count = sqlalchemy.Column(sqlalchemy.Integer)
     events = sqlalchemy.orm.relation("Event", backref="user")
     photo = sqlalchemy.orm.relation("File", uselist=False)
 

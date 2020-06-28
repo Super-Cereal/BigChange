@@ -16,7 +16,10 @@
                 <h4>#id <span style='color: red'>{{ user.id }}</span></h4>
                 <h5>Последний раз заходил на сайт: <span style='color: red'>{{ user.last_time_in }}</span></h5>
                 <p>Почта - {{ user.email }}</p>
-                <h5 style="color:aliceblue">За последние 12 часов вы помогли {{ session.get('events_count', 0) }} животным</h5>
+                {% if user.help_count %}
+                <h5>Вы помогли уже {{ user.help_count }} животным</h5>
+                {% endif %}
+                <h5>У Вас {{ user.events|length }} активных события</h5>
             </div>
             {% if current_user.is_authenticated and current_user.id == user.id and user.photo %}
                 <div>

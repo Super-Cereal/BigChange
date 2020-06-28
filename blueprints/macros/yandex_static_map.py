@@ -26,7 +26,7 @@ def get_map(ll):
         'll': ll,
         'pt': f'{ll},pm2rdm',
         'l': 'sat',
-        'z': 16,
+        'z': 18,
         'size': '450,450'
     }
     map_response = get(static_map_api_server, params=map_params)

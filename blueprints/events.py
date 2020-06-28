@@ -70,7 +70,11 @@ def add_event_addition(event_id):
         abort(403)
     form = FormAddEventAddition()
     if form.validate_on_submit():
-        event.additions.append(form.content.data)
+        if event.additions:
+            event.additions = f'{event.additions}${form.content.data}'
+        else:
+            event.additions = form.content.data
+        session.commit()
         return redirect(f'/event/{event_id}')
     else:
         return render_template('form_add_event_addition.html', form=form, event=event)

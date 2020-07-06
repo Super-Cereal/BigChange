@@ -16,21 +16,52 @@
                 <h2>Событие - {{ event.content[:15] + "..." }}</h2>
                 <h4>#id <span style='color: red'>{{ event.id }}</span></h4>
                 <p>Описание - {{ event.content }}</p>
-                {% if current_user.is_authenticated and current_user.id == event.user_id %}
-                    <b><a href="/add_event_addition/{{ event.id }}" class='link'>Добавить пометку</a></b>
-                {% endif %}
-                {% if event.additions %}
-                    {% for addition in event.additions.split('$') %}
-                        <hr>
-                        <div>{{ loop.index }}) {{ addition }}</div>
-                    {% endfor %}
-                    <hr>
-                {% endif %}
+                <div class="additions-wrapper">
+                    {% if current_user.is_authenticated and current_user.id == event.user_id %}
+                        <b><a href="/add_event_addition/{{ event.id }}" class='link'>Добавить пометку</a></b>
+                    {% endif %}
+                    <div class="additions">
+                        {% if event.additions %}
+                            {% for addition in event.additions.split('$') %}
+                            <div class="addition">
+                                <hr>
+                                <div>{{ loop.index }}) {{ addition }}</div>
+                                {% if current_user.id == event.user_id %}
+                                    <div><a href="/del_event_addition/{{ event.id }}&{{ loop.index - 1 }}">удал.</a></div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                            <hr>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
             <br>
             {% if current_user.is_authenticated and current_user.id == event.user_id %}
                 <a href="/del_event/{{ event.id }}" class='link'>Удалить событие</a>
             {% endif %}
+        </div>
+
+        <div class="comments-wrapper">
+            <h2>Комментарии</h2>
+            <a href="/add_comment/{{ event.id }}">Вы можете написать комментарий</a>
+            <div class="comments">
+                {% for comment in event.comments %}
+                    <div class="comment">
+                        <div>Создатель - {{ comment.user.name }}</div>
+                        <hr>
+                        <div>{{ comment.content }}</div>
+                        <hr>
+                        {% if current_user.id == comment.user_id or current_user.id == comment.event_id %}
+                            {% if current_user.id == comment.user_id %}
+                                <div><a href="\edit_comment\{{ comment.id }}">ред.</a></div>
+                            {% endif %}
+                            <div><a href="\del_comment\{{ comment.id }}">удал.</a></div>
+                        {% endif %}
+                    </>
+                {% endfor %}
+                <hr>
+            </div>
         </div>
     </div>
     </div>

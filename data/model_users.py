@@ -20,6 +20,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     hashed_password = sqlalchemy.Column(sqlalchemy.String)
     help_count = sqlalchemy.Column(sqlalchemy.Integer)
     events = sqlalchemy.orm.relation("Event", backref="user")
+    comments = sqlalchemy.orm.relation("Comment", backref="user")
     photo = sqlalchemy.orm.relation("File", uselist=False)
 
     def set_password(self, password):

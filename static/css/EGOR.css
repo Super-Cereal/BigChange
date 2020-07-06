@@ -1,0 +1,10 @@
+.comments-wrapper {
+    background: burlywood;
+    padding: 5px;
+}
+
+.comments .comment {
+    background:cadetblue;
+    margin:20px;
+    padding: 5px 20px;
+}

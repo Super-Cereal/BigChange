@@ -37,9 +37,9 @@ def event(event_id):
 
 @blueprint.route('/add_event', methods=['GET', 'POST'])
 def add_event():
-    form = FormAddEvent()
     if not current_user.is_authenticated:
         return redirect('/events_sorry')
+    form = FormAddEvent()
     if form.validate_on_submit():
         ll = get_ll(form.address.data)
         if not ll:
@@ -78,6 +78,22 @@ def add_event_addition(event_id):
         return redirect(f'/event/{event_id}')
     else:
         return render_template('form_add_event_addition.html', form=form, event=event)
+
+
+@blueprint.route('/del_event_addition/<int:event_id>&<int:addition_num>', methods=['GET', 'POST'])
+@login_required
+def del_event_addition(event_id, addition_num):
+    session = db_session.create_session()
+    event = session.query(Event).get(event_id)
+    if current_user.id != event.user_id:
+        abort(403)
+    additions = event.additions.split('$')
+    if len(additions) <= addition_num:
+        abort(404)
+    del additions[addition_num]
+    event.additions = '$'.join(additions)
+    session.commit()
+    return redirect(f'/event/{event_id}')
 
 
 @blueprint.route('/del_event/<int:event_id>', methods=['GET', 'POST'])

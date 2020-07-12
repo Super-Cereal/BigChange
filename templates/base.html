@@ -31,12 +31,12 @@
     <main>
     {% block content %}
     {% endblock %}
-    </main>
-    {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/static/js/jquery.cookie.js"></script>
     <script src="/static/js/jquery.js"></script>
+    {% block scripts %}
     {% endblock %}
+    </main>
 </body>
 </html>
 

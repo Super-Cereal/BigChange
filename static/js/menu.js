@@ -13,7 +13,6 @@ window.addEventListener('DOMContentLoaded', () => {
             menu.style.opacity = 1;
             menu.style.right = 0;
             menu.style.zIndex = 11;
-            
         
         }else{
             menu.style.opacity = 0;

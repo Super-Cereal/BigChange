@@ -2,41 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="stylesheet" href="/static/css/bootstrap-grid.min.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.min.css">
-    <link rel="stylesheet" href="/static/css/EGOR.css">
     <title>Доброе дело</title>
 </head>
 <body>
-    <header class="menu">
-        <div class="container">
-        <div class="menu__wrapper">
-            <div class="menu_logo">ДЕЛАЙ <br> ДОБРО</div>
+    <header class="menu" style="opacity: 0;transition: 1s all;">
             <ul class="menu_ul" id='menu'>
                 <li class="menu_li"><a href="/">Главная</a></li>
-                <li class="menu_li"><a href="/add_event">Добавить</a></li>
+                
+                <li class="menu_li"><a href="/add_event">Добавить событие</a></li>
                 <li class="menu_li"><a href="/events">Карта</a></li>
                 <li class="menu_li"><a href="/">Новости</a></li>
                 {% if current_user.is_authenticated %}          
                         <li class="menu_li"><a href="/user/{{ current_user.id }}">Личный кабинет</a></li>
                 {% else %}
-                        <li class="menu_li go"><a href='/login' style="cursor:pointer;">Логин</a> </li>
+                        <li class="menu_li go"><a href='/login' style="cursor:pointer;">Войти</a> </li>
                 {% endif %}
             </ul>
-        </div>
+            <div class="black"></div> 
+            <div class="hamburger_cross"></div>           
     </header>
+    <div class="hamburger_main" >
+        <span class='line'></span>
+        <span class='line'></span>
+        <span class='line'></span>
+    </div>
     <main>
-    {% block content %}
-    {% endblock %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="/static/js/jquery.cookie.js"></script>
-    <script src="/static/js/jquery.js"></script>
-    {% block scripts %}
-    {% endblock %}
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="static/js/menu.js"></script>
+    {% endblock %}
 </body>
 </html>
 

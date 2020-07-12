@@ -12,8 +12,9 @@ blueprint = Blueprint('comments', __name__,
 
 
 @blueprint.route('/add_comment/<int:event_id>', methods=["GET", "POST"])
-@login_required
 def add_comment(event_id):
+    if not current_user.is_authenticated:
+        return render_template('comments_sorry.html')
     session = db_session.create_session()
     form = FormAddComment()
     if form.validate_on_submit():

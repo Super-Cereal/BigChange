@@ -11,6 +11,6 @@ def save_file(model, file):
     if not os.path.exists(path):
         os.mkdir(path)
     filename = secure_filename(convert_ru_to_eng(file.data.filename))
-    file.data.save(os.path.join(path, filename))
-    file = File(path=os.path.join(path, filename))
+    file.data.save(f'{path}/{filename}')
+    file = File(path=f'{path}/{filename}')
     return file

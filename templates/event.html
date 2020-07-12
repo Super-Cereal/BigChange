@@ -5,6 +5,8 @@
     <div class="infolist">
         <div class=''>
             <div>
+                <h2>{{ event.content[:15] + "..." }}</h2>
+                <p>{{ event.content }}</p>
                 <p>Адрес - {{ event.address }}</p>
                 <a href="https://yandex.ru/maps/?z=18&l=sat%2Cskl&ll={{ event.ll }}" target="_blank">
                 <img src="data:image/png;base64,{{ map_photo }}" height="300px" alt="">
@@ -13,9 +15,7 @@
                 {% if event.photo %}
                 <img src="/{{ event.photo.path }}" height="300px">
                 {% endif %}
-                <h2>Событие - {{ event.content[:15] + "..." }}</h2>
-                <h4>#id <span style='color: red'>{{ event.id }}</span></h4>
-                <p>Описание - {{ event.content }}</p>
+                
                 <div class="additions-wrapper">
                     {% if current_user.is_authenticated and current_user.id == event.user_id %}
                         <b><a href="/add_event_addition/{{ event.id }}" class='link'>Добавить пометку</a></b>
@@ -58,7 +58,7 @@
                             {% endif %}
                             <div><a href="\del_comment\{{ comment.id }}">удал.</a></div>
                         {% endif %}
-                    </>
+                    </div>
                 {% endfor %}
                 <hr>
             </div>

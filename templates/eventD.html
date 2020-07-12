@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+    <div class="infolist">
+        <div class='card'>
+            <div class="card-title">
+                <h1>{{ event.content }}</h1>
+                <a href='/user/{{ event.user.id }}' target="_blank">{{ event.user.name }}</a>
+            </div>
+            <div class="card-main">
+                <div class="card-content">
+                    <div class="content">
+                        {{ event.content }}
+                    </div>
+                    <div class="additions-wrapper">
+                        {% if current_user.id == event.user.id %}
+                            <a href="/add_event_addition/{{ event.id }}" class="new_addition">
+                                <img src="/static/images/add_icon1.png" alt="добавить">
+                            </a>
+                        {% endif %}
+                        <h2 style="text-align: center;">Пометки</h2>
+                        <div class="additions">
+                            <div class="addition-hr"></div>
+                            {% if event.additions %}
+                                {% for addition in event.additions.split('$') %}
+                                    <div class="addition">
+                                        <div>{{ addition }}</div>
+                                        {% if current_user.id == event.user_id %}
+                                            <div><a href="/del_event_addition/{{ event.id }}&{{ loop.index - 1 }}">удал.</a></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="addition-hr"></div>
+                                {% endfor %}
+                                
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="comments-wrapper">
+                        <a href="/add_comment/{{ event.id }}" class="new_comment">
+                            <img src="/static/images/add_icon1.png" alt="добавить">
+                        </a>
+                        <h2>Комментарии</h2>
+                        <div class="comments">
+                            {% for comment in event.comments %}
+                                <a href="/user/{{ comment.user.id }}" target="_blank"><img src="/{{ comment.user.photo.path if comment.user.photo else 'static/images/none_image.png' }}" class="comment-user-image" alt=""></a>
+                                <div class="comment">
+                                    <div class="comment-main-name"><a href="/user/{{ comment.user.id }}" target="_blank">{{ comment.user.name }}</a></div>
+                                    <div class="comment-main-content">{{ comment.content }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-images">
+                    <a href="https://yandex.ru/maps/?z=18&l=sat%2Cskl&ll={{ event.ll }}" target="_blank">Адрес - {{ event.address }}</a>
+                    <a href="https://yandex.ru/maps/?z=18&l=sat%2Cskl&ll={{ event.ll }}" target="_blank">
+                        <img src="data:image/png;base64,{{ map_photo }}" class="map" height="300px" href="https://yandex.ru/maps/?z=18&l=sat%2Cskl&ll={{ event.ll }}">
+                    </a>
+                    <img src="/{{ event.photo.path }}" class="photo">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+
+<!--
+    <div class="comments-wrapper">
+            
+        </div>
+-->

@@ -14,7 +14,7 @@ app.register_blueprint(user_authenticate.blueprint)
 app.register_blueprint(users.blueprint)
 app.register_blueprint(events.blueprint)
 app.register_blueprint(comments.blueprint)
-run_with_ngrok(app)
+# run_with_ngrok(app)
 
 
 @app.route('/', methods=['GET'])

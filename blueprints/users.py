@@ -7,6 +7,7 @@ from data.model_users import User
 from .macros.delete_downloads_structure import delete_downloads_structure
 from .macros.delete_file_if_exists import delete_file_if_exists
 from .macros.save_file import save_file
+from .macros.crop_image import crop_image
 
 from .forms.forms_users import FormEditUser
 
@@ -44,6 +45,7 @@ def edit_user(user_id):
         if form.photo.data:
             delete_file_if_exists(file=user.photo, session=session)
             user.photo = save_file(user, file=form.photo)
+            crop_image(user.photo.path)
         session.commit()
         return redirect(f'/user/{user_id}')
     else:

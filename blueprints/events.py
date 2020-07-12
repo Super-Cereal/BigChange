@@ -32,7 +32,7 @@ def event(event_id):
     session = db_session.create_session()
     event = session.query(Event).get(event_id)
     map_photo = get_map(event.ll)
-    return render_template('event.html', event=event, map_photo=map_photo)
+    return render_template('eventD.html', event=event, map_photo=map_photo)
 
 
 @blueprint.route('/add_event', methods=['GET', 'POST'])

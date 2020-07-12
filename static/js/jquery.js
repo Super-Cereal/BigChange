@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
         const textUserQuestion = document.getElementById('email_log');
         const textUserQuestion2 = document.getElementById('email_reg');
-        var box1 = $.cookie('modal_log')//Получаем значение куки 
+        var box1 = $.cookie('modal_log');//Получаем значение куки 
         textUserQuestion.focus();
         if(box1 =='none'){//Делаем проверку  
             $('#modal_log').hide();

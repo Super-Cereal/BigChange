@@ -97,7 +97,11 @@ input, button, textarea, select
             font-size: 100%
         [for="remember"]
             margin-top: 25px
-                
+.main_infolist
+  width: 100vw
+  height: 100vh
+  z-index: 1
+  background: url('/static/images/dog.jpg')   center center/cover   no-repeat
 
 
 input[type="checkbox"]:checked, 
@@ -171,9 +175,11 @@ input[type="checkbox"]:checked + label:after
   height: 100%
   width: 70%
   position: fixed
+  opacity: 0
   top: 0
-  left: 0
-
+  left: -70%
+  z-index: -1
+  transition: 2s all
   background-color:  rgba(0, 0, 0, .4)
 .menu
   height: 100%
@@ -181,7 +187,6 @@ input[type="checkbox"]:checked + label:after
   position: fixed
   right: -100%
   background-color: white
-  transform: 3s all
   padding: 100px 0
   &_ul  
     height: 75%
@@ -311,3 +316,37 @@ input[type="checkbox"]:checked + label:after
       cursor: pointer
   &_reg
     padding-top: 0
+.main__descr
+  font-weight: 500
+  position: absolute
+  display: block  
+  margin-top: 150px 
+  font-size: 50px
+  line-height: 70px
+  color: white
+  span
+    color: #459fed
+
+
+.main_button
+  outline:none
+  border: 0 !important
+  position: absolute
+  top: 670px
+  width: 350px
+  height: 60px
+  left: 50%
+  transform: translateX(-50%)
+  background-color: #459fed
+  font-size: 25px
+  color: white
+  font-weight: 500
+  &:active, &:focus
+    outline: none !important
+    border: 0 !important
+
+  &:hover
+      box-shadow: 0px 0px 10px #459fed
+      outline: none
+      color: #fff
+  

@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    $('.menu_ul').hide();
-  
+    $('.menu').hide();
+   document.querySelector('.hamburger_main').style.display = 'none';
     function explode(){
       $('#hamb').fadeIn(1000);
       textUserQuestion.focus();

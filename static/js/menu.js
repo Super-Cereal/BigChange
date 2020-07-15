@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
+    // const dan = document.querySelectorAll('.alert-danger');
+    // dan.forEach(e => {e.textContent = '1';})
     const menu = document.querySelector('.menu'),
     hamburger = document.querySelector('.hamburger_main'),
     line = document.querySelector('.line'),

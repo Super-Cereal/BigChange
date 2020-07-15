@@ -6,13 +6,10 @@ $(document).ready(function() {
         if (filename.substring(3,11) == 'fakepath') {
             filename = filename.substring(12);}
         data = filename.split('.');
-        if (filename.length > 0 ){
-            $('label[for="photo"]').text(filename);
-            $('label[for="photo"]').addClass("ok");$
-            ('label[for="photo"]').removeClass("nook");}
+        if (filename.length > 0 && (data[data.length - 1] === 'jpg' || data[data.length - 1] === 'png' || data[data.length - 1] === 'jpeg')){
+            $('label[for="photo"]').text(filename);}
         else{
             $('label[for="photo"]').addClass("nook");
-            $('label[for="photo"]').removeClass("ok");
             $('label[for="photo"]').text('Загрузить файл');
         }
         

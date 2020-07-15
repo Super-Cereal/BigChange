@@ -25,8 +25,8 @@ class FormAddUser(FlaskForm):
 
 
 class FormEditUser(FlaskForm):
-    name = StringField('Your name or nickname', validators=[DataRequired(message='This field is required')])
-    photo = FileField('Image')
+    name = StringField('Ваше новое имя', validators=[DataRequired(message='This field is required')])
+    photo = FileField('Загрузить файл')
     submit = SubmitField('Send')
 
     def validate_photo(self, field):

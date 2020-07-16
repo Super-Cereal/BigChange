@@ -7,12 +7,14 @@ $(document).ready(function() {
             filename = filename.substring(12);}
         data = filename.split('.');
         if (filename.length > 0 && (data[data.length - 1] === 'jpg' || data[data.length - 1] === 'png' || data[data.length - 1] === 'jpeg')){
-            $('label[for="photo"]').text(filename);}
+            $('label[for="photo"]').text(filename);
+            $('label[for="photo"]').removeClass("nook");}
         else{
             $('label[for="photo"]').addClass("nook");
             $('label[for="photo"]').text('Загрузить файл');
         }
         
     }); 
-}
+    }
+    
 });

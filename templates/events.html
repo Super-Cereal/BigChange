@@ -5,11 +5,21 @@
     <div class="average ">
             {% for event in events %}
             <div class="average__wrapper col-12">
+                    {% if event.photo %}
                     <div class="average__img"><img src="/{{ event.photo.path }}" class="photo"></div> 
+                    {%else%}
+                    <div class="average__img_none">
+                        <div class="none"></div>
+                            <div class="hr_left"></div>
+                            <div class="hr_right"></div>
+
+                    </div> 
+                    {% endif%}
                     <div class="average__subwrapper"> 
                             <div class="average__event"><a href="/event/{{ event.id }}">{{ event.content[:15] + "" }} {{""}}</a></div>
                         <address class="average__adress">{{ event.address }}</address>
                     </div>
+
                     
             </div>
             {% endfor %}

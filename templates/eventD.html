@@ -57,7 +57,9 @@
                     <a href="https://yandex.ru/maps/?z=18&l=sat%2Cskl&ll={{ event.ll }}" target="_blank">
                         <img src="data:image/png;base64,{{ map_photo }}" class="map" height="300px" href="https://yandex.ru/maps/?z=18&l=sat%2Cskl&ll={{ event.ll }}">
                     </a>
-                    <img src="/{{ event.photo.path }}" class="photo">
+                    {% if event.photo %}
+                        <img src="/{{ event.photo.path }}" class="photo">
+                    {% endif %}
                 </div>
             </div>
         </div>

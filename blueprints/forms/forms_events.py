@@ -10,7 +10,7 @@ from blueprints.macros.convert_ru_to_eng import convert_ru_to_eng
 class FormAddEvent(FlaskForm):
     address = StringField('Approximate address', validators=[DataRequired()])
     content = TextAreaField('Description', validators=[DataRequired()])
-    photo = FileField('Photo')
+    photo = FileField('Загрузить файл')
     submit = SubmitField('Post')
 
     def validate_photo(self, field):

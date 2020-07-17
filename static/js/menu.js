@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
+    // const dan = document.querySelectorAll('.alert-danger');
+    // dan.forEach(e => {e.textContent = '1';})
     const menu = document.querySelector('.menu'),
     hamburger = document.querySelector('.hamburger_main'),
     line = document.querySelector('.line'),
@@ -8,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
         if (menu.style.opacity == '0')
         {
-            hamburger.style.display = 'none';
+            setTimeout(()=>{hamburger.style.display = 'none';}, 400);
             black.style.left = 0;
             black.style.opacity = 1;
             menu.style.opacity = 1;

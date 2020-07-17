@@ -49,6 +49,9 @@
                                     <div class="comment-main-content">{{ comment.content }}</div>
                                 </div>
                             {% endfor %}
+                            {% if current_user.is_authenticated and current_user.id == event.user_id %}
+                                <a href="/del_event/{{ event.id }}" class='link' >Удалить событие</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

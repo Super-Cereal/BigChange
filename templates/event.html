@@ -38,7 +38,7 @@
             </div>
             <br>
             {% if current_user.is_authenticated and current_user.id == event.user_id %}
-                <a href="/del_event/{{ event.id }}" class='link'>Удалить событие</a>
+                <a href="/del_event/{{ event.id }}" class='link' style="background: black;width: 200px;height: 200px;">Удалить событие</a>
             {% endif %}
         </div>
 

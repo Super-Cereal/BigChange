@@ -27,6 +27,7 @@
 .card-main .card-images img.photo {
     border-radius: 2%;
     margin-top: 15px;
+    
     max-width: 350px;
     max-height: 600px;
 }
